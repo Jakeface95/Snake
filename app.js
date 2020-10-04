@@ -84,9 +84,11 @@ function drawSnakePart(snakePart) {
 }
 
 function has_game_ended() {
+    // Checks to make sure that the head hasn't collided with any body parts
     for (let i = 4; i < snake.length; i++) {
         if (snake[i].x === snake[0].x && snake[i].y === snake[0].y) return true
     }
+    // Checks to ensure that the snake hasn't hit the canvas borders
     const hitLeftWall = snake[0].x < 0;
     const hitRightWall = snake[0].x > snakeboard.width - 10;
     const hitToptWall = snake[0].y < 0;
@@ -125,6 +127,7 @@ function change_direction(event) {
     }
 }
 
+// Returns a random coordinate on the grid to spawn the food
 function random_food(min, max) {
     return Math.round((Math.random() * (max-min) + min) / 10) * 10;
 }
@@ -141,6 +144,7 @@ function gen_food() {
     });
 }
 
+// Draws the food icon when called upon
 function drawFood() {
     snakeboard_ctx.fillStyle = 'lightgreen';
     snakeboard_ctx.strokestyle = 'darkgreen';
