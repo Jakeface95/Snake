@@ -37,6 +37,7 @@ function main() {
     clear_board();
     move_snake();
     drawSnake();
+    drawFood();
     // Call main again
     main();
     }, 100)
@@ -134,4 +135,11 @@ function gen_food() {
         const has_eaten = part.x == food_x && part.y == food_y;
         if (has_eaten) gen_food();
     });
+}
+
+function drawFood() {
+      snakeboard_ctx.fillStyle = 'lightgreen';
+      snakeboard_ctx.strokestyle = 'darkgreen';
+      snakeboard_ctx.fillRect(food_x, food_y, 10, 10);
+      snakeboard_ctx.strokeRect(food_x, food_y, 10, 10);
 }
