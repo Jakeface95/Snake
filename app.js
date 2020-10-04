@@ -1,6 +1,6 @@
 const board_border = 'black';
-const board_background = "white";
-const snake_col = 'lightblue';
+const board_background = "lightgrey";
+const snake_col = 'purple';
 const snake_border = 'darkblue';
 
 let snake = [
@@ -14,9 +14,10 @@ let snake = [
 let score = 0;
 // True if changing direction
 let changing_direction = false;
-// Horizontal velocity
+// Spawn food
 let food_x;
 let food_y;
+// Horizontal velocity
 let dx = 10;
 // Vertical velocity
 let dy = 0;
@@ -27,8 +28,8 @@ const snakeboard = document.getElementById("gameCanvas");
 const snakeboard_ctx = snakeboard.getContext("2d");
 // Start game
 main();
+// Generate food
 gen_food();
-
 
 document.addEventListener("keydown", change_direction);
 
@@ -123,23 +124,23 @@ function random_food(min, max) {
     return Math.round((Math.random() * (max-min) + min) / 10) * 10;
   }
 
-  function gen_food() {
+function gen_food() {
     // Generate a random number the food x-coordinate
     food_x = random_food(0, snakeboard.width - 10);
     // Generate a random number for the food y-coordinate
     food_y = random_food(0, snakeboard.height - 10);
     // if the new food location is where the snake currently is, generate a new food location
     snake.forEach(function has_snake_eaten_food(part) {
-      const has_eaten = part.x == food_x && part.y == food_y;
-      if (has_eaten) gen_food();
+        const has_eaten = part.x == food_x && part.y == food_y;
+        if (has_eaten) gen_food();
     });
-  }
+}
 
 function drawFood() {
-      snakeboard_ctx.fillStyle = 'lightgreen';
-      snakeboard_ctx.strokestyle = 'darkgreen';
-      snakeboard_ctx.fillRect(food_x, food_y, 10, 10);
-      snakeboard_ctx.strokeRect(food_x, food_y, 10, 10);
+    snakeboard_ctx.fillStyle = 'lightgreen';
+    snakeboard_ctx.strokestyle = 'darkgreen';
+    snakeboard_ctx.fillRect(food_x, food_y, 10, 10);
+    snakeboard_ctx.strokeRect(food_x, food_y, 10, 10);
 }
 
 function move_snake() {
@@ -149,14 +150,14 @@ function move_snake() {
     snake.unshift(head);
     const has_eaten_food = snake[0].x === food_x && snake[0].y === food_y;
     if (has_eaten_food) {
-      // Increase score
-      score += 10;
-      // Display score on screen
-      document.getElementById('score').innerHTML = score;
-      // Generate new food location
-      gen_food();
+        // Increase score
+        score += 1;
+        // Display score on screen
+        document.getElementById('score').innerHTML = score;
+        // Generate new food location
+        gen_food();
     } else {
-      // Remove the last part of snake body
-      snake.pop();
+        // Remove the last part of snake body
+        snake.pop();
     }
-  }
+}
