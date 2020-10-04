@@ -122,3 +122,16 @@ function move_snake() {
     snake.unshift(head);
     snake.pop();
 }
+
+function random_Location_Food(min, max) {  
+   return Math.round((Math.random() * (max-min) + min) / 10) * 10;
+}
+
+function gen_food() {  
+   food_x = random_Location_Food(0, snakeboard.width - 10);
+   food_y = random_Location_Food(0, snakeboard.height - 10);
+   snake.forEach(function has_snake_eaten_food(part) {
+        const has_eaten = part.x == food_x && part.y == food_y;
+        if (has_eaten) gen_food();
+    });
+}
