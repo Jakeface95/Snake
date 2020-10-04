@@ -2,6 +2,7 @@ const board_border = 'black';
 const board_background = "lightgrey";
 const snake_col = 'purple';
 const snake_border = 'darkblue';
+const button = document.querySelector("#restartButton");
 
 let snake = [
     {x: 200, y: 200},
@@ -31,6 +32,10 @@ main();
 // Generate food
 gen_food();
 
+// Restarts the page when button is clicked
+button.addEventListener("click", () => {
+    location.reload()
+});
 document.addEventListener("keydown", change_direction);
 
 // main function called repeatedly to keep the game running
