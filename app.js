@@ -127,7 +127,7 @@ function change_direction(event) {
 
 function random_food(min, max) {
     return Math.round((Math.random() * (max-min) + min) / 10) * 10;
-  }
+}
 
 function gen_food() {
     // Generate a random number the food x-coordinate
