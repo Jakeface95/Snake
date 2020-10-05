@@ -23,6 +23,7 @@ let dx = 10;
 // Vertical velocity
 let dy = 0;
 
+
 // Get the canvas element
 const snakeboard = document.getElementById("gameCanvas");
 // Return a two dimensional drawing context
