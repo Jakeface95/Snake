@@ -1,6 +1,6 @@
 const board_border = 'black';
 const board_background = "lightgrey";
-const snake_col = 'purple';
+const snake_col = 'lightblue';
 const snake_border = 'darkblue';
 const button = document.querySelector("#restartButton");
 
