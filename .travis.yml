@@ -1,0 +1,11 @@
+# Set up the language as node.js
+language: node_js
+# Tell the system which version of node to install!
+node_js:
+    - latest
+# Tell the system what command to use to install the necessary packages
+install:
+    - npm install
+# Tell the system what test command to use
+script: 
+    - npm test
