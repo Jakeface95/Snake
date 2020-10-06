@@ -2,7 +2,7 @@
 language: node_js
 # Tell the system which version of node to install!
 node_js:
-    - latest
+    - lts/*
 # Tell the system what command to use to install the necessary packages
 install:
     - npm install
